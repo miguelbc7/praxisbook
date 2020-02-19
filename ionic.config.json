@@ -1,0 +1,7 @@
+{
+  "name": "PraxiBook",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

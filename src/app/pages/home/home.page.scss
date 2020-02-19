@@ -1,0 +1,102 @@
+.ReferNavbar{
+
+}
+
+app-home{
+  .bodyHome{
+    padding: 10px;
+
+    .borderSection{
+      border-bottom: 1px solid #465c67;
+      padding-bottom: 20px;
+      margin-bottom: 5px;
+      &:last-child{
+        border-bottom: none;
+      }
+      .nav{
+        margin: auto 10px;
+        .title{
+          margin: 10px auto;
+          @media (max-width: 340px){
+            font-size: 16px;
+          }
+        }
+        .inputSearch{
+          ion-input{
+            text-align: right;
+          }
+          ion-button{
+            background-color: transparent;
+            --background: transparent;
+            color: #000;
+            --box-shadow: none;
+            ion-icon{
+              color: #000;
+            }
+            &::placeholder{
+              color: #000;
+            }
+          }
+        }
+      }
+      .cardEdit{
+        border-radius: 0;
+        margin: 0 10px;
+        box-shadow: none;
+        border: 1px solid #d1d1d1;
+        ion-card-header{
+          img{
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            object-position: center center;
+            @media (max-width: 330px){
+              height: 130px;
+            }
+          }
+        }
+        ion-card-content{
+          padding: 5px 10px;
+          .title{
+            font-size: 16px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            text-align: left;
+            color: var(--color-text);
+            @media (max-width: 330px){
+              font-size: 14px;
+            }
+          }
+          .alignAuthor{
+            display: flex;
+            align-items: center;
+            p{
+              text-align: left;
+              width: 80%;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+              text-align: left;
+              color: var(--color-text);
+              font-size: 14px;
+              @media (max-width: 330px){
+                font-size: 12px;
+             }
+            }
+            ion-button{
+              width: 20%;
+              --background: transparent;
+              --box-shadow: none;
+              img{
+                width: 25px;
+                height: 25px;
+                min-width: 25px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

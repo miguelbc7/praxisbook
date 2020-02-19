@@ -1,0 +1,124 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+
+/* General scss */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html, body{
+    height: 100%;
+}
+.ion-color-transparent {
+    --ion-color-base-rgb: 255, 255, 255;
+    --ion-color-contrast: transparent;
+    --ion-color-contrast-rgb: 255,255,255;
+    --ion-color-shade: transparent;
+    --ion-color-tint: transparent;
+}
+ion-checkbox{
+    --background-checked: transparent;
+    --border-color-checked: #fff;
+    --checkmark-color: #f4f5f8;
+    --background: transparent;
+    --border-color: #fff;
+}
+
+.navbarEdit{
+
+    ion-toolbar{
+        --background: #000;
+        .logo{
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    
+            img{
+                width: 35px;
+                transform: scale(2.5);
+                /* margin-left: 10px; */
+                height: 35px;
+            }
+            h5{
+                margin-left: 5px;
+                color: #fff;
+                font-size: 22px;
+                margin: 8px 0 8px 5px;
+                @media (max-width:330px){
+                    margin: 3px 0 3px 5px;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+    ion-button{
+        --background: transparent;
+        color: #fff;
+        --overflow: visible;
+        width: 35%;
+        --padding-start: 5px;
+        --padding-end: 5px;
+        text-transform: capitalize;
+        letter-spacing: 0;  
+
+        &:nth-child(1){
+            span{
+                font-size: 11px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                max-width: 70%;
+                display: block;
+                margin-right: auto;
+            }
+            ion-icon{
+                font-size: 32px;
+                margin-right: 2.5px !important;
+                text-align: left;
+                margin-right: auto;
+            }
+        }
+        .hearth{
+            font-size: 52px;
+            margin-left: auto;
+
+        }
+    }
+}
+
+.p-0{
+    padding: 0 !important;
+}
+
+/* margin */
+
+.m-0{
+    margin: 0 !important;
+}
+
+.mb-0{
+    margin-bottom: 0 !important;
+}

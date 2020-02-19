@@ -1,0 +1,134 @@
+<ion-header class="navbarEdit">
+  <ion-toolbar>
+    <ion-button mode="md" slot="start" routerLink="/library"><ion-icon name="menu"></ion-icon> <span>Juan Gonzalez</span></ion-button>
+    <div class="logo">
+      <img src="assets/img/logo.svg" alt="">
+      <h5>Praxi<br>Book</h5>
+    </div>
+    <ion-button mode="md"  slot="end" ><ion-icon class="hearth" src="assets/img/hearth.svg"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="bodyHome">
+    <div class="borderSection">    
+      <div class="nav">
+        <ion-grid class="p-0">
+          <ion-row class="p-0">
+            <ion-col class="p-0">
+              <h5 class="title">Últimos títulos</h5>
+            </ion-col>  
+            <ion-col class="p-0">
+              <ion-item lines="none" class="inputSearch">
+                <ion-input type="text" placeholder="Buscar"></ion-input>
+                <ion-button mode="md"><ion-icon name="search-outline"></ion-icon></ion-button>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div class="contain">
+        <ion-slides [options]="slideOpts" #mySlider>
+          <ion-slide>
+            <ion-card class="cardEdit">
+              <ion-card-header class="p-0">
+                <img src="https://s3-us-west-2.amazonaws.com/lasaga-blog/media/images/grupo_imagen.original.jpg" alt="">
+              </ion-card-header>
+              <ion-card-content>
+                <h5 class="title">Guia de la pasta</h5>
+                <div class="alignAuthor">
+                  <p>Luigi Scociola</p>
+                  <ion-button slot="end" mode="md"><img src="assets/img/share.png" alt=""></ion-button>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card class="cardEdit">
+              <ion-card-header class="p-0">
+                <img src="assets/img/example.png" alt="">
+              </ion-card-header>
+              <ion-card-content>
+                <h5 class="title">Guia de la pasta</h5>
+                <div class="alignAuthor">
+                  <p>Luigi Scociola</p>
+                  <ion-button slot="end" mode="md"><img src="assets/img/share.png" alt=""></ion-button>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card class="cardEdit">
+              <ion-card-header class="p-0">
+                <img src="assets/img/example.png" alt="">
+              </ion-card-header>
+              <ion-card-content>
+                <h5 class="title">Guia de la pasta</h5>
+                <div class="alignAuthor">
+                  <p>Luigi Scociola</p>
+                  <ion-button slot="end" mode="md"><img src="assets/img/share.png" alt=""></ion-button>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </div>
+    </div>
+    <div class="borderSection">    
+      <div class="nav">
+        <ion-grid class="p-0">
+          <ion-row class="p-0">
+            <ion-col class="p-0">
+              <h5 class="title">Los más buscados</h5>
+            </ion-col>  
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div class="contain">
+        <ion-slides [options]="slideOpts">
+          <ion-slide>
+            <ion-card class="cardEdit">
+              <ion-card-header class="p-0">
+                <img src="https://s3-us-west-2.amazonaws.com/lasaga-blog/media/images/grupo_imagen.original.jpg" alt="">
+              </ion-card-header>
+              <ion-card-content>
+                <h5 class="title">Guia de la pasta</h5>
+                <div class="alignAuthor">
+                  <p>Luigi Scociola</p>
+                  <ion-button slot="end" mode="md"><img src="assets/img/share.png" alt=""></ion-button>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card class="cardEdit">
+              <ion-card-header class="p-0">
+                <img src="assets/img/example.png" alt="">
+              </ion-card-header>
+              <ion-card-content>
+                <h5 class="title">Guia de la pasta</h5>
+                <div class="alignAuthor">
+                  <p>Luigi Scociola</p>
+                  <ion-button slot="end" mode="md"><img src="assets/img/share.png" alt=""></ion-button>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card class="cardEdit">
+              <ion-card-header class="p-0">
+                <img src="assets/img/example.png" alt="">
+              </ion-card-header>
+              <ion-card-content>
+                <h5 class="title">Guia de la pasta</h5>
+                <div class="alignAuthor">
+                  <p>Luigi Scociola</p>
+                  <ion-button slot="end" mode="md"><img src="assets/img/share.png" alt=""></ion-button>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </div>
+    </div>
+  </div>
+</ion-content>
