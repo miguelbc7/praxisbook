@@ -1,0 +1,241 @@
+app-buy-book{
+    ion-content{
+        .body{
+            .btnBack{
+                --background: transparent;
+                color: #000;
+                --box-shadow: none;
+                position: relative;
+                left: 10px;
+            }
+            .boxPortada{
+                img{
+                    height: 200px;
+                    width: 100%;
+                    object-fit: contain;
+                }
+            }
+
+            .boxDescription{
+                p{
+                    margin: 0;
+                    font-size: 16px;
+                }
+                .price{
+                    margin-top: 20px;
+                }
+                .buttons{
+                    display: flex;
+                    margin-top: 40px;
+                    .button{
+                        width: 70px;
+                        height: 70px;
+                        position: relative;
+                        background-color: #41ad48;
+                        margin: 10px 10px auto 0;
+                        opacity: .7;
+                        span{
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            -webkit-transform: translate(-50%, -50%);
+                            transform: translate(-50%, -50%);
+                            width: 80%;
+                            color: #fff;
+                            font-size: 14px;
+                        }
+                    }
+                    .button.active{
+                        opacity: 1;
+                    }
+                }
+                
+            }
+            .formDescription{
+                ion-list{
+                    padding: 0 10px;
+                    width: calc(100% + 16px);
+                    ion-item{
+                        --padding-start: 0;
+                        --highlight-color-focused: #000;
+                        --highlight-color-valid: #000;
+                        --highlight-color-invalid: #000;
+                        --background-focused: #000;
+                        --background-hover: #000;
+                        .BtnQty{
+                            display: flex;
+                            align-items: center;
+                            width: 110px;
+                            position: relative;
+                            right: -10px;
+                            ion-button{
+                                --background: transparent;
+                                color: #000;
+                                --box-shadow: none;
+                                height: 34px
+                            }
+                            ion-input{
+                                border: 1px solid #41ad48;
+                                height: 34px;
+                                input{
+                                    padding: 0 ;
+                                    text-align: center;
+                                }
+                            }
+
+                        }
+
+                        ion-checkbox{
+                            --border-color: #41ad48;
+                            --border-color-checked: #41ad48;
+                            --checkmark-color: #41ad48;
+                            --checkmark-width: 2px;
+                            transform: translateX(-34px);
+                            --border-width: 1px;
+                            width: 24px;
+                            height: 24px;
+                        }
+                        ion-label{
+                            white-space: normal;
+                            transform: scale(1);
+                            color: #000 !important;
+                        }
+                        .input{
+                            border: 1px solid #41ad48;
+                            height: 34px;
+                            input{
+                                padding-left: 8px;
+                            }
+                        }
+                        span{
+                            bottom: -35px;
+                            position: relative;
+                            img{
+                                width: 30px;
+                            }
+                        }
+                    }
+                    
+                    .boxGift{
+                        display: flex;
+                        align-items: center;
+                        width: 100%;
+                        margin-bottom: 15px;
+                        padding-right: 16px;
+                        .box{
+                            margin: 5px;
+                            width: 16.6%;
+                            &:hover{
+                                cursor: pointer;
+                            }
+                            input{
+                                display: none;
+                            }
+                            label{
+                                margin-bottom: 0;
+                                transition: .2s;
+                                padding: 3.5px 2.5px;
+                                cursor: pointer;
+                                height: 65px;
+                                display: block;
+                                @media (max-width: 330px){
+                                    height: 45px;
+                                }
+                                img{
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                    max-width: 50px;
+                                }
+                            }
+
+                            input[type=radio]:checked + label {
+                                border: 2px solid #818e3e;
+                                transform: scale(1.15);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .textInteresing{
+            padding: 0 10px;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+        .cardEdit{
+            border-radius: 0;
+            margin: 0 10px;
+            box-shadow: none;
+            border: 1px solid #d1d1d1;
+            ion-card-header{
+              img{
+                width: 100%;
+                height: 160px;
+                object-fit: cover;
+                object-position: center center;
+                @media (max-width: 330px){
+                  height: 130px;
+                }
+              }
+            }
+            ion-card-content{
+              padding: 5px 10px;
+              .title{
+                font-size: 16px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                text-align: left;
+                color: var(--color-text);
+                @media (max-width: 330px){
+                  font-size: 14px;
+                }
+              }
+              .alignAuthor{
+                display: flex;
+                align-items: center;
+                p{
+                  text-align: left;
+                  width: 80%;
+                  text-overflow: ellipsis;
+                  overflow: hidden;
+                  white-space: nowrap;
+                  text-align: left;
+                  color: var(--color-text);
+                  font-size: 14px;
+                  @media (max-width: 330px){
+                    font-size: 12px;
+                 }
+                }
+                ion-button{
+                  width: 20%;
+                  --background: transparent;
+                  --box-shadow: none;
+                  img{
+                    width: 25px;
+                    height: 25px;
+                    min-width: 25px;
+                  }
+                }
+              }
+            }
+          }
+    }
+
+    .btnSend{
+        --background: #41ad48;
+        --border-radius: 0;
+        color: #fff;
+        margin: 0;
+        height: 40px;
+        padding: 0 10px;
+        display: block;
+    }
+    .p-0{
+        padding: 0 !important;
+    }
+    .mb-15{
+        margin-bottom: 15px;
+    }
+}

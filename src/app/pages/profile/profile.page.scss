@@ -1,0 +1,83 @@
+app-profile{
+    .body{
+        background-color:#000; 
+        min-height: 100%;
+
+        ion-list{
+            max-width: 85%;
+            padding: 40px;
+            --background: transparent;
+            background: transparent;
+            margin: auto;
+            ion-item{
+                background: transparent;
+                --background: transparent;
+                color: #fff;
+                border-bottom: 1px solid #5b7da0;
+                --padding-start: 0;
+                --padding-end: 0;
+                margin-bottom: 10px;
+               
+                &:last-child(){
+                    border-bottom: none;
+                }
+                ion-input{
+                    --placeholder-color: #fff;
+                    --placeholder-font-style: #fff;
+                    --placeholder-font-weight: #fff !important;
+                    --placeholder-opacity: 1;
+                }
+               
+                ion-button.button-disabled {
+                    --opacity: 1;
+                 }
+                 :host(.button-disabled) {
+                    --opacity: .5;
+                  
+                    pointer-events: none;
+                  }
+                  
+                  :host(.button-disabled) .button-native {
+                    cursor: default;
+                  
+                    pointer-events: none;
+                  }
+                ion-button{
+                    --background: transparent;
+                    position: relative;
+                    right: -16px;
+                    img{
+                        width: 25px;
+                        object-fit: contain;
+                    }
+                }
+                ion-toggle{
+                    --background: rgba(var(--ion-text-color-rgb,0,0,0),0.088);
+                    --background-checked: transparent;
+                    --handle-background: #fff;
+                    --handle-background-checked: #0000fe;
+                    --border-radius: 16px;
+                    --handle-border-radius: 14px;
+                    padding: 3px;
+                    border: 1px solid #fff;
+                    border-radius: 25px;
+                    position: relative;
+                    right: -16px;
+                }
+            }
+            ion-item.item-interactive-disabled{
+                ion-input{
+                    opacity: 1;
+                    --opacity: 1;
+                    input{
+                        opacity: .6 !important;
+                    }
+                }        
+            }
+        }
+    }
+
+    .bb-0{
+        border-bottom: 0 !important;   
+    }
+}

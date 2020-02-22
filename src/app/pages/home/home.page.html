@@ -5,7 +5,7 @@
       <img src="assets/img/logo.svg" alt="">
       <h5>Praxi<br>Book</h5>
     </div>
-    <ion-button mode="md"  slot="end" ><ion-icon class="hearth" src="assets/img/hearth.svg"></ion-icon></ion-button>
+    <ion-button mode="md"  slot="end" routerLink="/notifications"><ion-icon class="hearth" name="notifications-outline"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
@@ -29,7 +29,7 @@
       <div class="contain">
         <ion-slides [options]="slideOpts" #mySlider>
           <ion-slide>
-            <ion-card class="cardEdit">
+            <ion-card class="cardEdit" routerLink="/buy-book"> 
               <ion-card-header class="p-0">
                 <img src="https://s3-us-west-2.amazonaws.com/lasaga-blog/media/images/grupo_imagen.original.jpg" alt="">
               </ion-card-header>
@@ -43,7 +43,7 @@
             </ion-card>
           </ion-slide>
           <ion-slide>
-            <ion-card class="cardEdit">
+            <ion-card class="cardEdit" routerLink="/buy-book"> 
               <ion-card-header class="p-0">
                 <img src="assets/img/example.png" alt="">
               </ion-card-header>
@@ -57,7 +57,7 @@
             </ion-card>
           </ion-slide>
           <ion-slide>
-            <ion-card class="cardEdit">
+            <ion-card class="cardEdit" routerLink="/buy-book"> 
               <ion-card-header class="p-0">
                 <img src="assets/img/example.png" alt="">
               </ion-card-header>
@@ -86,7 +86,7 @@
       <div class="contain">
         <ion-slides [options]="slideOpts">
           <ion-slide>
-            <ion-card class="cardEdit">
+            <ion-card class="cardEdit" routerLink="/buy-book"> 
               <ion-card-header class="p-0">
                 <img src="https://s3-us-west-2.amazonaws.com/lasaga-blog/media/images/grupo_imagen.original.jpg" alt="">
               </ion-card-header>
@@ -100,7 +100,7 @@
             </ion-card>
           </ion-slide>
           <ion-slide>
-            <ion-card class="cardEdit">
+            <ion-card class="cardEdit" routerLink="/buy-book"> 
               <ion-card-header class="p-0">
                 <img src="assets/img/example.png" alt="">
               </ion-card-header>
@@ -114,7 +114,7 @@
             </ion-card>
           </ion-slide>
           <ion-slide>
-            <ion-card class="cardEdit">
+            <ion-card class="cardEdit" routerLink="/buy-book"> 
               <ion-card-header class="p-0">
                 <img src="assets/img/example.png" alt="">
               </ion-card-header>

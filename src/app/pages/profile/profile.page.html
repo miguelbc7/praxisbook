@@ -1,9 +1,67 @@
-<ion-header>
+<ion-header class="navbarEdit">
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-button mode="md" slot="start" routerLink="/library"><ion-icon name="menu"></ion-icon> <span>Juan Gonzalez</span></ion-button>
+    <div class="logo">
+      <img src="assets/img/logo.svg" alt="">
+      <h5>Praxi<br>Book</h5>
+    </div>
+    <ion-button mode="md"  slot="end" routerLink="/articles"><ion-icon class="hearth" name="notifications-outline"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+  <div class="body">
+    <ion-list>
+      <ion-item lines="none">
+        <ion-input [disabled]="name" type="text" placeholder="Nombre"></ion-input>
+        <ion-button (click)="name = !name " slot="end" mode="md"><img src="assets/img/pencil.png"></ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-input [disabled]="password" [type]="!password? 'text' : 'password'" (ngModel)="passwrod1" placeholder="Cambiar contraseña"></ion-input>
+        <ion-button (click)="password = !password " slot="end" mode="md"><img src="assets/img/pencil.png"></ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Notificaciones</ion-label>
+        <ion-toggle mode="md" slot="end"></ion-toggle>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Juan Gonzalez</ion-label>
+        <ion-toggle mode="md" slot="end"></ion-toggle>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Vibración</ion-label>
+        <ion-button slot="end" mode="md"><img src="assets/img/pencil.png"></ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Soporte</ion-label>
+        <ion-button slot="end" mode="md"><img src="assets/img/chevron-right.png" alt=""></ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Sobre Praxi Book</ion-label>
+        <ion-button slot="end" mode="md"><img src="assets/img/chevron-right.png" alt=""></ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>FAQ</ion-label>
+        <ion-button slot="end" mode="md"><img src="assets/img/chevron-right.png" alt=""></ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Cerrar cuenta</ion-label>
+        <ion-button slot="end" mode="md"><img src="assets/img/chevron-right.png" alt=""></ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Condiciones y terminos</ion-label>
+        <ion-button slot="end" mode="md"><img src="assets/img/chevron-right.png" alt=""></ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Politicas de privacidad</ion-label>
+        <ion-button slot="end" mode="md"><img src="assets/img/chevron-right.png" alt=""></ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Datos de facturación</ion-label>
+        <ion-button slot="end" mode="md"><img src="assets/img/chevron-right.png" alt=""></ion-button>
+      </ion-item>
+      <ion-item lines="none" class="bb-0" routerLink="/home">
+        <ion-label>Salir</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

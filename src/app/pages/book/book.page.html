@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="nav">
+      <img src="assets/img/logo.svg" alt="">
+      <div class="navigation">
+        <ion-button mode="md"><ion-icon name="caret-back-outline"></ion-icon></ion-button>
+        <h5 (click)="showChapter = !showChapter">El Dragón de Oro</h5>
+        <ion-button mode="md"><ion-icon name="caret-forward-outline"></ion-icon></ion-button>
+      </div>
+    </div>
+  </ion-toolbar>
+  <div class="marcaLibro" *ngIf="showChapter">
+    <h5>Marcalibro</h5>
+    <div class="body">
+      <ion-button mode="md">01</ion-button>
+      <ion-button mode="md">02</ion-button>
+      <ion-button mode="md">03</ion-button>
+      <ion-button mode="md">04</ion-button>
+      <ion-button mode="md">05</ion-button>
+      <ion-button mode="md">06</ion-button>
+      <ion-button mode="md">07</ion-button>
+      <ion-button mode="md">08</ion-button>
+      <ion-button mode="md">09</ion-button>
+      <ion-button mode="md">10</ion-button>
+      <ion-button mode="md">11</ion-button>
+      <ion-button mode="md">12</ion-button>
+      <ion-button mode="md">13</ion-button>
+      <ion-button mode="md">14</ion-button>
+      <ion-button mode="md">15</ion-button>
+      <ion-button mode="md">16</ion-button>
+      <ion-button mode="md">17</ion-button>
+      <ion-button mode="md">18</ion-button>
+      <ion-button mode="md">19</ion-button>
+      <ion-button mode="md">20</ion-button>
+      <ion-button mode="md">21</ion-button>
+      <ion-button mode="md">22</ion-button>
+      <ion-button mode="md">23</ion-button>
+      <ion-button mode="md">24</ion-button>
+      <ion-button mode="md">25</ion-button>
+      <ion-button mode="md">26</ion-button>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="body">
+    <!-- Portada -->
+    <div class="portada">
+      <img src="assets/img/portada.png" alt="">
+    </div>
+    <div class="bodyBook">
+      <!-- Chapter 1  -->
+      <section class="text">
+        <h3 class="tilteChapter"><img src="assets/img/title.png" alt=""><span>1</span></h3>
+        <p>
+          Necesitamos luz solar para estar vivos, la luz solar está compuesta de fotones, debemos alimentarnos con fotones, fotones de primera mano y de primera calidad que solo provienen de plantas en forma de vegetales y frutas como resultado de los nutrientes que la planta transforma a través de la fotosíntesis.
+        </p>
+        <p>
+          Comer	animales	significa	comer	fotones	de	segunda mano que provienen de las plantas que el animal	ha	comido,	esto	también	significa	que	se	le	está proporcionando información corrupta al ADN
+        </p>
+      </section>
+      <section class="sound">
+
+      </section>
+      <section class="image">
+        <ion-slides [options]="slideOpts">
+          <ion-slide>
+            <div class="box">
+              <img src="assets/img/image1.png" alt="">
+            </div>
+          </ion-slide>
+          <ion-slide>
+            <div class="box">
+              <img src="assets/img/image2.png" alt="">
+            </div>
+          </ion-slide>
+          <ion-slide>
+            <div class="box">
+              <img src="assets/img/image1.png" alt="">
+            </div>
+          </ion-slide>
+        </ion-slides>
+      </section>
+      <section class="text text-center">
+        <h4><b>Crema de zanahorias y jengibre</b></h4>
+        <ul>
+          <li> 1 kg de zanahorias </li>
+          <li> 4 cebollas medianas </li>
+          <li> 4 dientes de ajo 30g de jengibre fresco -o más!</li>
+          <li> 4 cucharadas de ras hanout 1 cucharadita de pimienta negra </li>
+          <li> 3 cucharadas de aceite de oliva suave o aceite de coco </li>
+          <li> Sal al gusto</li>
+        </ul>
+        <ion-button mode="md">
+            <img src="assets/img/editor.png" alt="">
+        </ion-button>
+      </section>
+    </div>
+
+  </div>
+</ion-content>

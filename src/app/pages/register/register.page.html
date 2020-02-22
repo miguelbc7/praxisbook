@@ -1,57 +1,103 @@
 <ion-content>
-  <div class="boxBody">
-    <div class="box">
-      <img src="assets/img/logo.svg" alt="">
-     <h5>Praxi<br>Book</h5>
-    </div>
-    <ion-list>
-      <ion-item lines="none" class="mb-0">  
-        <ion-label position="floating">Nombre</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-      <p class="msgError">*msg Error</p>
-      <ion-item lines="none" class="mb-0">
-        <ion-label position="floating">Apellido</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-      <p class="msgError">*msg Error</p>
-      <ion-item lines="none" class="mb-0">
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type="emal"></ion-input>
-      </ion-item>
-      <p class="msgError">*msg Error</p>
-      <ion-item lines="none" class="mb-0">
-        <ion-label position="floating">Fecha de nacimiento</ion-label>
-        <ion-datetime type="date-time"></ion-datetime>
-      </ion-item>
-      <p class="msgError">*msg Error</p>
-      <ion-item lines="none" class="mb-0">
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password" ></ion-input>
-        <ion-button mode="md"><ion-icon name="eye-off-outline"></ion-icon></ion-button>
-      </ion-item>
-      <p class="msgError">*msg Error</p>
-      <ion-item lines="none" class="mb-0">
-        <ion-label position="floating">Confirmar contraseña</ion-label>
-        <ion-input type="password" ></ion-input>
-        <ion-button mode="md"><ion-icon name="eye-off-outline"></ion-icon></ion-button>
-      </ion-item>
-      <p class="msgError">*msg Error</p>
-      <div class="formAlign">
-        <ion-item lines="none" class="itemCheckbox">
-          <ion-label>Aceptar políticas de privacidad</ion-label>
-          <ion-checkbox slot="start" mode="md"></ion-checkbox>
-        </ion-item>
-      <p class="msgError">*msg Error</p>
-
-        <ion-item lines="none" class="itemCheckbox">
-          <ion-label>Aceptar terminos y condiciones del servicio</ion-label>
-          <ion-checkbox slot="start" mode="md"></ion-checkbox>
-        </ion-item>
-      <p class="msgError">*msg Error</p>
-
-      </div>
-      <ion-button class="btnRegister" mode="md">Entrar</ion-button>
-    </ion-list>
-  </div>
+	<div class="boxBody">
+		<div class="box">
+			<img src="assets/img/logo.svg" alt="">
+			<h5>Praxi<br>Book</h5>
+		</div>
+		<form [formGroup]="register" (ngSubmit)="onSubmit(register.value)"  class="ion-margin-horizontal">
+			<ion-list>
+				<ion-item lines="none" class="mb-0">  
+					<ion-label position="floating">Nombre</ion-label>
+					<ion-input formControlName="name" name="name" type="text"></ion-input>
+				</ion-item>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.name">
+						<div class="error-message" *ngIf="register.get('name').hasError(validation.type) && (register.get('name').dirty || register.get('name').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<ion-item lines="none" class="mb-0">
+					<ion-label position="floating">Apellido</ion-label>
+					<ion-input formControlName="lastname" name="lastname" type="text"></ion-input>
+				</ion-item>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.lastname">
+						<div class="error-message" *ngIf="register.get('lastname').hasError(validation.type) && (register.get('lastname').dirty || register.get('lastname').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<ion-item lines="none" class="mb-0">
+					<ion-label position="floating">Email</ion-label>
+					<ion-input formControlName="email" name="email" type="email"></ion-input>
+				</ion-item>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.email">
+						<div class="error-message" *ngIf="register.get('email').hasError(validation.type) && (register.get('email').dirty || register.get('email').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<ion-item lines="none" class="mb-0">
+					<ion-label position="floating">Fecha de nacimiento</ion-label>
+					<ion-datetime formControlName="birthdate" name="birthdate" type="date-time"></ion-datetime>
+				</ion-item>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.birthdate">
+						<div class="error-message" *ngIf="register.get('birthdate').hasError(validation.type) && (register.get('birthdate').dirty || register.get('birthdate').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<ion-item lines="none" class="mb-0">
+					<ion-label position="floating">Contraseña</ion-label>
+					<ion-input formControlName="password" name="password" [type]="passwordType"></ion-input>
+					<ion-button mode="md" (click)="togglePassword()"><ion-icon [name]="passwordShown === true ? 'eye-off' : 'eye'" [color]="passwordShown === true ? 'bluelight' : 'bluedark' " slot="end" align-self-end></ion-icon></ion-button>
+				</ion-item>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.password">
+						<div class="error-message" *ngIf="register.get('password').hasError(validation.type) && (register.get('password').dirty || register.get('password').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<ion-item lines="none" class="mb-0">
+					<ion-label position="floating">Confirmar contraseña</ion-label>
+					<ion-input formControlName="cpassword" name="cpassword" [type]="passwordType2"></ion-input>
+					<ion-button mode="md" (click)="revelarConfirmacion()"><ion-icon [name]="passwordShown2 === true ? 'eye-off' : 'eye'" [color]="passwordShown2 === true ? 'bluelight' : 'bluedark' " slot="end" align-self-end></ion-icon></ion-button>
+				</ion-item>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.cpassword">
+						<div class="error-message" *ngIf="register.get('cpassword').hasError(validation.type) && (register.get('cpassword').dirty || register.get('cpassword').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<div class="formAlign">
+					<ion-item lines="none" class="itemCheckbox">
+						<ion-label>Aceptar políticas de privacidad</ion-label>
+						<ion-checkbox checked="false" (change)="politval = !politval" formControlName="polit" slot="start" mode="md"></ion-checkbox>
+					</ion-item>
+					<ion-item lines="none" class="itemCheckbox">
+						<ion-label>Aceptar terminos y condiciones del servicio</ion-label>
+						<ion-checkbox checked="false" (change)="termsval = !termsval" formControlName="terms" slot="start" mode="md"></ion-checkbox>
+					</ion-item>
+				</div>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.polit">
+						<div class="error-message" *ngIf="register.get('polit').hasError(validation.type) && (register.get('polit').dirty || register.get('polit').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+					<ng-container *ngFor="let validation of validation_messages.terms">
+						<div class="error-message" *ngIf="register.get('terms').hasError(validation.type) && (register.get('terms').dirty || register.get('terms').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<ion-button type="submit" [disabled]="!register.valid" class="btnRegister" mode="md">Entrar</ion-button>
+			</ion-list>
+		</form>
+  	</div>
 </ion-content>

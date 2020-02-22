@@ -31,6 +31,9 @@
 html, body{
     height: 100%;
 }
+ion-button{
+    --ripple-color: transparent;
+}
 .ion-color-transparent {
     --ion-color-base-rgb: 255, 255, 255;
     --ion-color-contrast: transparent;
@@ -47,9 +50,14 @@ ion-checkbox{
 }
 
 .navbarEdit{
-
+   
+    &::after{
+        background-image: none;
+    }
     ion-toolbar{
         --background: #000;
+        border-bottom: 2px solid #fff;
+        padding: 0 10px;
         .logo{
             padding: 4px;
             display: flex;
@@ -102,9 +110,8 @@ ion-checkbox{
             }
         }
         .hearth{
-            font-size: 52px;
+            font-size: 28px;
             margin-left: auto;
-
         }
     }
 }

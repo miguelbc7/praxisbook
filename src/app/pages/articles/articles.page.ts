@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation    } from '@angular/core';
 
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.page.html',
   styleUrls: ['./articles.page.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ArticlesPage implements OnInit {
 

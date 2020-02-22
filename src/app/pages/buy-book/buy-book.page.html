@@ -1,0 +1,170 @@
+<ion-header class="navbarEdit">
+  <ion-toolbar>
+    <ion-button mode="md" slot="start" routerLink="/library"><ion-icon name="menu"></ion-icon> <span>Juan Gonzalez</span></ion-button>
+    <div class="logo">
+      <img src="assets/img/logo.svg" alt="">
+      <h5>Praxi<br>Book</h5>
+    </div>
+    <ion-button mode="md"  slot="end" routerLink="/notifications"><ion-icon class="hearth" name="notifications-outline"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="body">
+    <ion-button class="btnBack" mode="md" routerLink="/home"><ion-icon name="chevron-back-outline"></ion-icon></ion-button>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="5">
+          <div class="boxPortada">
+            <img src="assets/img/portada.png" alt="">
+          </div>
+        </ion-col>
+        <ion-col size="7">
+          <div class="boxDescription">
+            <p>Enrique Cortez</p>
+            <p>The book of 36 messages</p>
+            <p class="price">Total price: <span>69.00€</span></p>
+            <div class="buttons">
+              <div class="button" (click)="status(1)" [ngClass]="{'active': statusBuy==false, ' ':statusBuy==true }">
+                <span>Buy and install</span>
+              </div>
+              <div class="button" (click)="status(2)" [ngClass]="{'active': statusBuy==true, ' ':statusBuy==false }">
+                <span>Buy and send</span>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="12" *ngIf="statusBuy">
+          <div class="formDescription">
+            <ion-list>
+              <ion-item lines="none">
+                <ion-label>Qty:</ion-label>
+                <div slot="end" class="BtnQty">
+                  <ion-button mode="md" (click)="less()">-</ion-button>
+                  <ion-input type="number" [value]="count"></ion-input>
+                  <ion-button mode="md" (click)="more()">+</ion-button>
+                </div>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-label>Gift wrap:</ion-label>
+                <ion-checkbox mode="md"></ion-checkbox>
+              </ion-item>
+              <div class="boxGift">
+                <div class="box">
+                  <input type="radio" id="radioRegalo1" name="radioRegalos" checked>
+                  <label for="radioRegalo1">
+                    <img class="img-fluid" src="assets/img/regalo1.png" alt="">
+                  </label>
+                </div>
+                <div class="box">
+                  <input type="radio" id="radioRegalo2" name="radioRegalos">
+                  <label for="radioRegalo2">
+                    <img class="img-fluid" src="assets/img/regalo2.png" alt="">
+                  </label>
+                </div>
+                <div class="box">
+                  <input type="radio" id="radioRegalo3" name="radioRegalos">
+                  <label for="radioRegalo3">
+                    <img class="img-fluid" src="assets/img/regalo3.png" alt="">
+                  </label>
+                </div>
+                <div class="box">
+                  <input type="radio" id="radioRegalo4" name="radioRegalos">
+                  <label for="radioRegalo4">
+                    <img class="img-fluid" src="assets/img/regalo4.png" alt="">
+                  </label>
+                </div>
+                <div class="box">
+                  <input type="radio" id="radioRegalo5" name="radioRegalos">
+                  <label for="radioRegalo5">
+                    <img class="img-fluid" src="assets/img/regalo5.png" alt="">
+                  </label>
+                </div>
+                <div class="box">
+                  <input type="radio" id="radioRegal6" name="radioRegalos">
+                  <label for="radioRegal6">
+                    <img class="img-fluid" src="assets/img/regalo6.png" alt="">
+                  </label>
+                </div>
+              </div>
+              <ion-item class="mb-15" lines="none">
+                <ion-label position="stacked">Enter email or email list <br>(separated by ,)</ion-label>
+                <ion-input class="input" type="text"></ion-input>
+                <span slot="end"><img src="assets/img/check.png" alt=""></span>
+              </ion-item>
+              <ion-grid class="p-0">
+                <ion-row class="p-0">
+                  <ion-col size="6" class="p-0">
+                    <ion-item class="mb-15" no-padding lines="none">
+                      <ion-label position="stacked">From:</ion-label>
+                      <ion-input class="input" type="text"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size="6" class="p-0">
+                    <ion-item class="mb-15" no-padding lines="none">
+                      <ion-label position="stacked">to</ion-label>
+                      <ion-input class="input" type="text"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+              <ion-item class="mb-15" lines="none">
+                <ion-label position="stacked">Write an email message</ion-label>
+                <ion-input class="input" type="text"></ion-input>
+              </ion-item>
+            </ion-list>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-button class="btnSend" mode="md"><span>Send</span><ion-icon name="caret-forward-outline"></ion-icon></ion-button>
+        </ion-col>
+        <ion-col size="12">
+          <h5 class="textInteresing">También te puede interesar</h5>
+          <ion-slides [options]="slideOpts" #mySlider>
+            <ion-slide>
+              <ion-card class="cardEdit" routerLink="/buy-book"> 
+                <ion-card-header class="p-0">
+                  <img src="https://s3-us-west-2.amazonaws.com/lasaga-blog/media/images/grupo_imagen.original.jpg" alt="">
+                </ion-card-header>
+                <ion-card-content>
+                  <h5 class="title">Guia de la pasta</h5>
+                  <div class="alignAuthor">
+                    <p>Luigi Scociola</p>
+                    <ion-button slot="end" mode="md"><img src="assets/img/share.png" alt=""></ion-button>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card class="cardEdit" routerLink="/buy-book"> 
+                <ion-card-header class="p-0">
+                  <img src="assets/img/example.png" alt="">
+                </ion-card-header>
+                <ion-card-content>
+                  <h5 class="title">Guia de la pasta</h5>
+                  <div class="alignAuthor">
+                    <p>Luigi Scociola</p>
+                    <ion-button slot="end" mode="md"><img src="assets/img/share.png" alt=""></ion-button>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card class="cardEdit" routerLink="/buy-book"> 
+                <ion-card-header class="p-0">
+                  <img src="assets/img/example.png" alt="">
+                </ion-card-header>
+                <ion-card-content>
+                  <h5 class="title">Guia de la pasta</h5>
+                  <div class="alignAuthor">
+                    <p>Luigi Scociola</p>
+                    <ion-button slot="end" mode="md"><img src="assets/img/share.png" alt=""></ion-button>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

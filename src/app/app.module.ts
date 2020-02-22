@@ -9,7 +9,16 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import {MaterialModule} from './material.io'
+import { MaterialModule } from './material.io';
+
+import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
+
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore'
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +28,12 @@ import {MaterialModule} from './material.io'
     BrowserAnimationsModule,
     IonicModule.forRoot(), AppRoutingModule,
     MaterialModule,
+    HttpClientModule,
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
   ],
   providers: [
     StatusBar,

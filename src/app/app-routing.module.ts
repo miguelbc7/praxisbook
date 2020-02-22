@@ -28,6 +28,22 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
+  {
+    path: 'book',
+    loadChildren: () => import('./pages/book/book.module').then( m => m.BookPageModule)
+  },
+  {
+    path: 'buy-book',
+    loadChildren: () => import('./pages/buy-book/buy-book.module').then( m => m.BuyBookPageModule)
+  },
+  {
+    path: 'notifications',
+    loadChildren: () => import('./pages/notifications/notifications.module').then( m => m.NotificationsPageModule)
+  },
+  {
+    path: 'detail-notifications',
+    loadChildren: () => import('./pages/detail-notifications/detail-notifications.module').then( m => m.DetailNotificationsPageModule)
+  },
 ];
 
 @NgModule({

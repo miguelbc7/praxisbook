@@ -30,7 +30,6 @@ app-library{
             mat-expansion-panel-header{
                 padding: 0;
                 mat-panel-title{
-                    font-weight: bold;
                     font-size: 16px;
                 }
                 .mat-expansion-indicator{
@@ -54,5 +53,21 @@ app-library{
                 }
             }
         }
+    }
+
+    .btnProfile{
+        --background: transparent;
+        color: #000;
+        text-transform: capitalize;
+        letter-spacing: 0;
+        --box-shadow: none;
+        --padding-start: 0;
+        --padding-end: 0;
+        font-size: 16px;
+        font-weight: bold;
+        ion-icon{
+            font-size: 30px;
+            margin-right: 5px;
+        }   
     }
 }

@@ -1,16 +1,16 @@
 <ion-header class="navbarEdit">
   <ion-toolbar>
-    <ion-button mode="md" slot="start"><ion-icon name="menu"></ion-icon> <span>Juan Gonzalez</span></ion-button>
+    <ion-button mode="md" slot="start" routerLink="/library"><ion-icon name="menu"></ion-icon> <span>Juan Gonzalez</span></ion-button>
     <div class="logo">
       <img src="assets/img/logo.svg" alt="">
       <h5>Praxi<br>Book</h5>
     </div>
-    <ion-button mode="md"  slot="end" routerLink="/library"><ion-icon class="hearth" src="assets/img/hearth.svg"></ion-icon></ion-button>
+    <ion-button mode="md"  slot="end" routerLink="/notifications"><ion-icon class="hearth" name="notifications-outline"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <div class="body">
-      <ion-button class="btnBack" mode="md"><ion-icon name="chevron-back-outline"></ion-icon></ion-button>
+      <ion-button class="btnBack" mode="md" routerLink="/home"><ion-icon name="chevron-back-outline"></ion-icon></ion-button>
       <h5 class="title">Mi biblioteca </h5>
       <div class="bodyPanel">
         <h5>Store</h5>
@@ -64,5 +64,6 @@
           </mat-expansion-panel>
         </mat-accordion>
       </div>
+      <ion-button mode="md" class="btnProfile" routerLink="/profile"><ion-icon name="cog-outline"></ion-icon>Configuración</ion-button>
   </div>
 </ion-content>

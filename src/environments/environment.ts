@@ -3,7 +3,20 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+	production: false,
+
+	url: 'https://rausdev.tk:8290/api/',
+
+	firebase:
+	{
+		apiKey: "AIzaSyBOp8tOBd2KCj-U00FaVyoY1Eonf1LMnnc",
+		authDomain: "probook-7c314.firebaseapp.com",
+		databaseURL: "https://rprobook-7c314.firebaseio.com",
+		projectId: "probook-7c314",
+		storageBucket: "probook-7c314.appspot.com",
+		messagingSenderId: "349218157019",
+		appId: "1:349218157019:web:dd166f1dc142fb338477fe"
+	}
 };
 
 /*

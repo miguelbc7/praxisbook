@@ -1,41 +1,55 @@
 <ion-content>
-  <div class="boxBody">
-    <div class="box">
-      <img src="assets/img/logo.svg" alt="">
-     <h5>Praxi<br>Book</h5>
-    </div>
-    <ion-list>
-      <ion-item lines="none">  
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type="email"></ion-input>
-      </ion-item>
-      <!-- <p class="msgError">*msg Error</p> -->
-      <ion-item lines="none" class="mb-0">
-        <ion-label position="floating">Password</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-      <!-- <p class="msgError">*msg Error</p> -->
-      <ion-grid class="p-0">
-        <ion-row class="p-0">
-          <ion-col size="6" class="p-0">
-            <ion-item lines="none" class="itemCheckbox">
-              <ion-label>Recordarme</ion-label>
-              <ion-checkbox slot="start" mode="md"></ion-checkbox>
-            </ion-item>
-          </ion-col>
-          <ion-col size="6">
-            <ion-button class="nuevaContraseña" mode="md">Nueva contraseña</ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-list>
-    <div class="box-entrar">
-      <ion-button class="entrar" routerLink="/home" mode="md">Entrar</ion-button>
-      <ion-button class="register" routerLink="/register" mode="md">Registrarse</ion-button>
-    </div>
-    <div class="buttonSocial">
-      <ion-button class="facebook" mode="md"><ion-icon class="fab fa-facebook-f"></ion-icon> Sign in with Facebook</ion-button>
-      <ion-button class="google" mode="md"><ion-icon class="fab fa-google-plus-g"></ion-icon> Sign in with Google</ion-button>
-    </div>
-  </div>
+	<div class="boxBody">
+		<div class="box">
+			<img src="assets/img/logo.svg" alt="">
+			<h5>Praxi<br>Book</h5>
+		</div>
+		<form [formGroup]="login" (ngSubmit)="onSubmit(login.value)"  class="ion-margin-horizontal">
+			<ion-list>
+				<ion-item lines="none">  
+					<ion-label position="floating">Email</ion-label>
+					<ion-input formControlName="email" name="email" type="email"></ion-input>
+				</ion-item>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.email">
+						<div class="error-message" *ngIf="login.get('email').hasError(validation.type) && (login.get('email').dirty || login.get('email').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<ion-item lines="none" class="mb-0">
+					<ion-label position="floating">Password</ion-label>
+					<ion-input formControlName="password" name="password" type="password"></ion-input>
+				</ion-item>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.password">
+						<div class="error-message" *ngIf="login.get('password').hasError(validation.type) && (login.get('password').dirty || login.get('password').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<ion-grid class="p-0">
+					<ion-row class="p-0">
+						<ion-col size="6" class="p-0">
+							<ion-item lines="none" class="itemCheckbox">
+								<ion-label>Recordarme</ion-label>
+								<ion-checkbox formControlName="remember" slot="start" mode="md"></ion-checkbox>
+							</ion-item>
+						</ion-col>
+						<ion-col size="6">
+							<ion-button class="nuevaContraseña" mode="md">Nueva contraseña</ion-button>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-list>
+			<div class="box-entrar">
+				<ion-button type="submit" [disabled]="!login.valid" class="entrar" mode="md">Entrar</ion-button>
+				<ion-button class="register" routerLink="/register" mode="md">Registrarse</ion-button>
+			</div>
+			<div class="buttonSocial">
+				<ion-button class="facebook" mode="md"><ion-icon class="fab fa-facebook-f"></ion-icon> Sign in with Facebook</ion-button>
+				<ion-button class="google" mode="md"><ion-icon class="fab fa-google-plus-g"></ion-icon> Sign in with Google</ion-button>
+			</div>
+		</form>
+	</div>
 </ion-content>
