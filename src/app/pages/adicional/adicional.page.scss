@@ -1,0 +1,42 @@
+app-adicional {
+    ion-content {
+        --background: #000;
+        .boxBody {
+            position: relative;
+            max-width: 80%;
+            margin: auto;
+            .btnBack{
+                color: #fff;
+                --background: transparent;
+                position: absolute;
+                right: -30px;
+                top: 15px;
+                border-radius: 50%;
+                font-size: 22px;
+            }
+            .box {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: -15px;
+                img {
+                    width: 100px;
+                }
+                h5 {
+                    color: #fff;
+                    margin: 0;
+                    font-size: 32px;
+                    font-weight: normal;
+                    line-height: 1.1;
+                    margin-left: -10px;
+                }
+            }
+        }
+
+        .text{
+            max-width: 90%;
+            margin: auto;
+        }
+    }
+}

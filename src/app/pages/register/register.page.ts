@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { Location } from '@angular/common';
+import { ToastController, ModalController } from '@ionic/angular';
 import { UsersService } from '../../services/users.service';
+import { AdicionalPage } from '../adicional/adicional.page';
 
 @Component({
 	selector: 'app-register',
@@ -12,6 +14,7 @@ import { UsersService } from '../../services/users.service';
 
 export class RegisterPage implements OnInit {
 
+	@Input() user;
 	shown: boolean = true;
 	public register: FormGroup;
 	passwordType: string = "password";
@@ -41,13 +44,13 @@ export class RegisterPage implements OnInit {
 	        { type: 'required', message: 'Debe ingresar una fecha de nacimiento.' },
       	],
       	'password': [
-            { type: 'required', message: 'Contraseña Rederida' },
+            { type: 'required', message: 'Contraseña Requerida' },
             { type: 'minlength', message: 'Debe ser mayor de 8 caracteres' },
             { type: 'maxlength', message: 'Debe ser menor de 15 caracteres.' },
-            { type: 'pattern', message: 'Su contraseña debe contener al menos una mayúscula, una minúscul, un número y un caracter especial.' }
+            { type: 'pattern', message: 'Su contraseña debe contener al menos una mayúscula, una minúscula, un número y un caracter especial.' }
 		],
 		'cpassword': [
-            { type: 'required', message: 'Contraseña Rederida' },
+            { type: 'required', message: 'Contraseña Requerida' },
             { type: 'minlength', message: 'Debe ser mayor de 8 caracteres' },
             { type: 'maxlength', message: 'Debe ser menor de 15 caracteres.' },
             { type: 'pattern', message: 'Su contraseña debe contener al menos una mayúscula, una minúscula, un número y un caracter especial.' }
@@ -62,8 +65,10 @@ export class RegisterPage implements OnInit {
 
 	constructor(
     	public formBuilder: FormBuilder,
-    	private router: Router,
+		private router: Router,
+		private _location: Location,
 		public toastController: ToastController,
+		private modalController: ModalController,
 		public users: UsersService
 	) {
 		this.register = formBuilder.group({
@@ -154,5 +159,20 @@ export class RegisterPage implements OnInit {
 			var e = error.error.error;
 			this.presentToast(e);
 		});
+	}
+
+	async goToAditional(type) {
+		const modal = await this.modalController.create({
+			component: AdicionalPage,
+			componentProps: {
+				type: type
+			}
+		});
+
+		return await modal.present();
+	}
+
+	async back() {
+		this._location.back();
 	}
 }

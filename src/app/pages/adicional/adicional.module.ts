@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { NavbarPageRoutingModule } from './navbar-routing.module';
+import { AdicionalPageRoutingModule } from './adicional-routing.module';
 
-import { NavbarPage } from './navbar.page';
+import { AdicionalPage } from './adicional.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NavbarPageRoutingModule
+    AdicionalPageRoutingModule
   ],
-  declarations: [NavbarPage]
+  declarations: [AdicionalPage]
 })
-export class NavbarPageModule {}
+export class AdicionalPageModule {}

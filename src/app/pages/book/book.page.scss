@@ -1,46 +1,49 @@
-app-book{
-    ion-header{
-        ion-toolbar{
+app-book {
+    ion-header {
+        &:after{
+            display: none !important;
+        }
+        ion-toolbar {
             --background: #000;
             color: #fff;    
-            .nav{
+            .nav {
                 display: flex;
                 padding: 0 5px;
-                img{
+                img {
                     width: 30px;
                     height: 56px;
                     object-fit: contain;
                 }
-                .navigation{
+                .navigation {
                     display: flex;
                     width: 100%;
                     max-width: calc(100% - 30px);
                     justify-content: space-between;
                     align-items: center;
-                    h5{
+                    h5 {
                         margin: 0;
                         align-items: center;
                         text-overflow: ellipsis;
                         overflow: hidden;
                         white-space: nowrap;
                     }
-                    ion-button{
+                    ion-button {
                         --background: transparent;
                     }
                 }
             }
         }
-        .marcaLibro{
+        .marcaLibro {
             position: absolute;
             left: 0;
             right: 0;
             background: #000;
             color: #fff;
             text-align: center;
-            h5{
+            h5 {
                 margin: 0px auto 10px;
             }
-            .body{
+            .body {
                 display: flex;
                 flex-wrap: wrap;
                 max-height: 176px;
@@ -52,43 +55,43 @@ app-book{
                     letter-spacing: 0;
                     box-shadow: none;
                 }
+                ion-button.active{
+                    background: #fff;
+                    color: #000;
+                }
             }
         }
     }
-
-    .portada{
-        img{
+    .btnBack{
+        --background: transparent;
+        color: #000;
+        --box-shadow: none;
+        position: relative;
+        left: 0px;
+    }
+    .portada {
+        img {
             width: 100%;
             height: auto;
         }
     }
-    .bodyBook{
+    .bodyBook {
         padding: 15px;
-        section{
+        position: relative;
+        touch-action: inherit;
+        section {
             margin: 15px auto;
-        }
-        .text{
-            .tilteChapter{
-                text-align: center;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                img{
-                    width: 60px;
-                    height: auto;
-                    object-fit: contain;
-                }
-                span{
-                    font-size: 60px;
-                    color: #666;
-                }
+            iframe{
+                width: 100%;
             }
-            p{
+        }
+        .text {
+            p {
                 text-align: justify;
                 font-size: 18px;
                 line-height: 1.3;
             }
-            ion-button{
+            ion-button {
                 --background: transparent;
                 box-shadow: none;
                 height: auto;
@@ -97,18 +100,34 @@ app-book{
                     width: 50px;
                 }
             }
-            ul{
+            ul {
                 padding: 0;
                 list-style: none;
                 font-size: 18px;
-                li{
+                li {
                     line-height: 1.3;
                     margin: 2.5px auto;
                 }
             }
         }
 
-        .text.text-center{
+        .tilteChapter {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img {
+                width: 60px;
+                height: auto;
+                object-fit: contain;
+            }
+            span {
+                font-size: 60px;
+                color: #666;
+            }
+        }
+
+        .text.text-center {
             text-align: center;
         }
     }

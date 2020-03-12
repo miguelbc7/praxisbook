@@ -5,15 +5,16 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { NotificationsPageRoutingModule } from './notifications-routing.module';
-
 import { NotificationsPage } from './notifications.page';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NotificationsPageRoutingModule
+    NotificationsPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [NotificationsPage]
 })

@@ -124,14 +124,14 @@ app-buy-book{
                         padding-right: 16px;
                         .box{
                             margin: 5px;
-                            width: 16.6%;
+                            width: 60%;
                             &:hover{
                                 cursor: pointer;
                             }
-                            input{
+                            ion-radio{
                                 display: none;
                             }
-                            label{
+                            ion-label{
                                 margin-bottom: 0;
                                 transition: .2s;
                                 padding: 3.5px 2.5px;
@@ -149,10 +149,15 @@ app-buy-book{
                                 }
                             }
 
-                            input[type=radio]:checked + label {
+                            ion-radio:checked + ion-label {
                                 border: 2px solid #818e3e;
                                 transform: scale(1.15);
                             }
+                            
+                            .gray {
+                                filter: grayscale(1);
+                            }
+                            
                         }
                     }
                 }

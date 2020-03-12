@@ -1,0 +1,96 @@
+<app-navbar></app-navbar>
+<ion-content>
+  <div class="nav">
+    <ion-button class="btnBack" mode="md" routerLink="/library"><ion-icon name="chevron-back-outline"></ion-icon></ion-button>
+    <h5>Novedades de {{ number }} dias</h5>
+  </div>
+  <div class="body">
+    <ion-toolbar class="navSegment">
+      <ion-segment scrollable mode="md" color="transparent">
+        <ion-segment-button  mode="md" value="0" checked >
+            Ver portadas
+        </ion-segment-button>
+        <ion-segment-button mode="md" value="1">
+          Ver lista
+        </ion-segment-button>
+      </ion-segment>
+      </ion-toolbar>
+      <ion-slides class="bodySegment">
+        <ion-slide class="slide-1">
+          <div class="body">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="4" class="bodyCard" *ngFor="let libro of libros">
+                  <div class="bodyPortada" *ngIf="libro.my_book" (click)="goToBook(libro._id)">
+                    <img *ngIf="!libro.cover" src="assets/img/portada.png" alt="{{ libro?.name }}">
+                    <img *ngIf="libro.cover" [src]="libro.cover" alt="{{ libro?.name }}" onError="this.src = 'assets/img/portada.png'"/>
+                  </div>
+                  <div class="bodyPortada" *ngIf="!libro.my_book" (click)="goToBuyBook(libro._id)">
+                    <img *ngIf="!libro.cover" src="assets/img/portada.png" alt="{{ libro?.name }}">
+                    <img *ngIf="libro.cover" [src]="libro.cover" alt="{{ libro?.name }}" onError="this.src = 'assets/img/portada.png'"/>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-slide>
+        <ion-slide class="slide-2">
+          <div class="body">
+            <div class="box-table">
+              <table>
+                <tr *ngFor="let libro of libros">
+                  <td *ngIf="libro.my_book" (click)="goToBook(libro._id)">{{ libro?.name }}</td>
+                  <td *ngIf="!libro.my_book" (click)="goToBuyBook(libro._id)">{{ libro?.name }}</td>
+                  <td *ngIf="libro.my_book" (click)="goToBook(libro._id)">{{ libro?.author }}</td>
+                  <td *ngIf="!libro.my_book" (click)="goToBuyBook(libro._id)">{{ libro?.author }}</td>
+                  <td *ngIf="libro.my_book" (click)="goToBook(libro._id)">{{ libro?.category }}</td>
+                  <td *ngIf="!libro.my_book" (click)="goToBuyBook(libro._id)">{{ libro?.category }}</td>
+                </tr>
+                
+                <!-- <tr routerLink="/book">
+                  <td>El Dragón Rojo</td>
+                  <td>Carlos Chang Y...</td>
+                  <td>Marketing</td>
+                </tr>
+                <tr routerLink="/book">
+                  <td>El Dragón Rojo</td>
+                  <td>Carlos Chang Y...</td>
+                  <td>Marketing</td>
+                </tr>
+                <tr routerLink="/book">
+                  <td>El Dragón Rojo</td>
+                  <td>Carlos Chang Y...</td>
+                  <td>Marketing</td>
+                </tr>
+                <tr routerLink="/book">
+                  <td>El Dragón Rojo</td>
+                  <td>Carlos Chang Y...</td>
+                  <td>Marketing</td>
+                </tr>
+                <tr routerLink="/book">
+                  <td>El Dragón Rojo</td>
+                  <td>Carlos Chang Y...</td>
+                  <td>Marketing</td>
+                </tr>
+                <tr routerLink="/book">
+                  <td>El Dragón Rojo</td>
+                  <td>Carlos Chang Y...</td>
+                  <td>Marketing</td>
+                </tr>
+                <tr routerLink="/book">
+                  <td>El Dragón Rojo</td>
+                  <td>Carlos Chang Y...</td>
+                  <td>Marketing</td>
+                </tr>
+                <tr routerLink="/">
+                  <td>El Dragón Rojo</td>
+                  <td>Carlos Chang Y...</td>
+                  <td>Marketing</td>
+                </tr> -->
+              </table>
+            </div>
+          </div>
+        </ion-slide>
+      </ion-slides>
+  </div>
+</ion-content>

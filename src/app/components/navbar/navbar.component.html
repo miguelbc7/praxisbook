@@ -1,0 +1,10 @@
+<ion-header class="navbarEdit">
+	<ion-toolbar>
+		<ion-button mode="md" slot="start" (click)="goToLibrary()"><ion-icon name="menu"></ion-icon> <span>{{ user?.name }} {{ user?.last_name}}</span></ion-button>
+		<div class="logo">
+			<img src="assets/img/logo.svg" alt="">
+			<h5>Praxi <br>Book</h5>
+		</div>
+		<ion-button mode="md"  slot="end" (click)="goToNotifications()"><ion-icon class="hearth" name="notifications-outline"></ion-icon></ion-button>
+	</ion-toolbar>
+</ion-header>

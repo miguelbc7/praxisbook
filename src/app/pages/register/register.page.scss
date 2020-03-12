@@ -38,7 +38,7 @@ app-register{
                         color: #fff;
                         text-align: center;
                     }
-                    ion-label{
+                    ion-label, ion-datetime{
                         color: #fff !important;
                         transform-origin: center top !important;
                         text-align: center;
@@ -53,12 +53,38 @@ app-register{
                     }
                 }
                 .itemCheckbox{
-                    border-bottom: 0;
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 15px;
                     ion-checkbox{
                         margin: 0;
+                        width: 18px;
+                        min-width: 18px;
+                        height: 18px;
+                        min-height: 18px;
                     }
                     ion-label{
-                        font-size: 12px;
+                        font-size: 13px;
+                        color: #fff;
+                        margin-left: 15px;
+                    }
+                }
+                .itemCheckbox2{
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 15px;
+                    ion-checkbox{
+                        margin: 0;
+                        width: 18px;
+                        min-width: 18px;
+                        height: 18px;
+                        min-height: 18px;
+                        margin-right: 5px;
+                    }
+                    ion-label{
+                        font-size: 13px;
+                        color: #fff;
+                        margin-left: 15px;
                     }
                 }
                 .formAlign{
@@ -78,6 +104,17 @@ app-register{
                     letter-spacing: 0;
                     text-transform: capitalize;
                     font-size: 14px;
+                }
+                .btnBack{
+                    --border-radius: 0;
+                    --background: transparent;
+                    color: #fff;
+                    width: 120px;
+                    margin: 10px auto 30px;
+                    display: block;
+                    letter-spacing: 0;
+                    text-transform: capitalize;
+                    font-size: 14px; 
                 }
             }
         }

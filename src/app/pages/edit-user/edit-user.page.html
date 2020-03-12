@@ -1,0 +1,43 @@
+<ion-content>
+	<div class="bodyForm">
+		<form [formGroup]="edit" (ngSubmit)="onSubmit(edit.value)" class="ion-margin-horizontal">
+			<ion-list>
+				<ion-item lines="none">  
+					<ion-label position="floating">Nombre</ion-label>
+					<ion-input formControlName="name" name="name" [(ngModel)]="data.name" type="text"></ion-input>
+				</ion-item>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.name">
+						<div class="error-message" *ngIf="edit.get('name').hasError(validation.type) && (edit.get('name').dirty || edit.get('name').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<ion-item lines="none">
+					<ion-label position="floating">Apellido</ion-label>
+					<ion-input formControlName="lastname" name="lastname" [(ngModel)]="data.lastname" type="text"></ion-input>
+				</ion-item>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.lastname">
+						<div class="error-message" *ngIf="edit.get('lastname').hasError(validation.type) && (edit.get('lastname').dirty || edit.get('lastname').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<ion-item lines="none">
+					<ion-label position="floating">Fecha de nacimiento</ion-label>
+					<ion-datetime formControlName="birthdate" name="birthdate" [(ngModel)]="data.birthdate" type="date-time"></ion-datetime>
+				</ion-item>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.birthdate">
+						<div class="error-message" *ngIf="edit.get('birthdate').hasError(validation.type) && (edit.get('birthdate').dirty || edit.get('birthdate').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<ion-button type="submit" [disabled]="!edit.valid" class="btnRegister" mode="md">Editar</ion-button>
+				<ion-button (click)="cancel()"  class="btnRegister" mode="md">Cancelar</ion-button>
+			</ion-list>
+		</form>
+	</div>
+</ion-content>

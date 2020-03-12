@@ -2,9 +2,9 @@
 	<div class="boxBody">
 		<div class="box">
 			<img src="assets/img/logo.svg" alt="">
-			<h5>Praxi<br>Book</h5>
+			<h5>Praxi <br>Book</h5>
 		</div>
-		<form [formGroup]="register" (ngSubmit)="onSubmit(register.value)"  class="ion-margin-horizontal">
+		<form [formGroup]="register" (ngSubmit)="onSubmit(register.value)" class="ion-margin-horizontal">
 			<ion-list>
 				<ion-item lines="none" class="mb-0">  
 					<ion-label position="floating">Nombre</ion-label>
@@ -75,14 +75,14 @@
 					</ng-container>
 				</div>
 				<div class="formAlign">
-					<ion-item lines="none" class="itemCheckbox">
-						<ion-label>Aceptar políticas de privacidad</ion-label>
+					<div lines="none" class="itemCheckbox">
 						<ion-checkbox checked="false" (change)="politval = !politval" formControlName="polit" slot="start" mode="md"></ion-checkbox>
-					</ion-item>
-					<ion-item lines="none" class="itemCheckbox">
-						<ion-label>Aceptar terminos y condiciones del servicio</ion-label>
+						<ion-label (click)="goToAditional(1)">Aceptar políticas de privacidad</ion-label>
+					</div>
+					<div lines="none" class="itemCheckbox2">
 						<ion-checkbox checked="false" (change)="termsval = !termsval" formControlName="terms" slot="start" mode="md"></ion-checkbox>
-					</ion-item>
+						<ion-label (click)="goToAditional(2)">Aceptar terminos y condiciones del servicio</ion-label>
+					</div>
 				</div>
 				<div class="validation-errors">
 					<ng-container *ngFor="let validation of validation_messages.polit">
@@ -97,6 +97,7 @@
 					</ng-container>
 				</div>
 				<ion-button type="submit" [disabled]="!register.valid" class="btnRegister" mode="md">Entrar</ion-button>
+				<ion-button class="btnBack" mode="md" (click)="back()">Cancelar</ion-button>
 			</ion-list>
 		</form>
   	</div>

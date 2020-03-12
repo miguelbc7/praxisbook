@@ -1,0 +1,69 @@
+<ion-content>
+	<div class="boxBody">
+		<div class="box">
+			<img src="assets/img/logo.svg" alt="">
+			<h5>Praxi <br>Book</h5>
+		</div>
+		<form [formGroup]="sregister" (ngSubmit)="onSubmit(sregister.value)"  class="ion-margin-horizontal">
+			<ion-list>
+				<ion-item lines="none" class="mb-0">  
+					<ion-label position="floating">Nombre</ion-label>
+					<ion-input formControlName="name" name="name" type="text" [(ngModel)]="name"></ion-input>
+				</ion-item>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.name">
+						<div class="error-message" *ngIf="sregister.get('name').hasError(validation.type) && (sregister.get('name').dirty || sregister.get('name').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<ion-item lines="none" class="mb-0">
+					<ion-label position="floating">Apellido</ion-label>
+					<ion-input formControlName="lastname" name="lastname" type="text" [(ngModel)]="lastname"></ion-input>
+				</ion-item>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.lastname">
+						<div class="error-message" *ngIf="sregister.get('lastname').hasError(validation.type) && (sregister.get('lastname').dirty || sregister.get('lastname').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<ion-item lines="none" class="mb-0">
+					<ion-label position="floating">Fecha de nacimiento</ion-label>
+					<ion-datetime formControlName="birthdate" name="birthdate" type="date-time"></ion-datetime>
+				</ion-item>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.birthdate">
+						<div class="error-message" *ngIf="sregister.get('birthdate').hasError(validation.type) && (sregister.get('birthdate').dirty || sregister.get('birthdate').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<div class="formAlign">
+					<div lines="none" class="itemCheckbox">
+						<ion-label (click)="goToAditional(1)">Aceptar políticas de privacidad</ion-label>
+						<ion-checkbox checked="false" (change)="politval = !politval" formControlName="polit" slot="start" mode="md"></ion-checkbox>
+					</div>
+					<div lines="none" class="itemCheckbox2">
+						<ion-label (click)="goToAditional(2)">Aceptar terminos y condiciones del servicio</ion-label>
+						<ion-checkbox checked="false" (change)="termsval = !termsval" formControlName="terms" slot="start" mode="md"></ion-checkbox>
+					</div>
+				</div>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.polit">
+						<div class="error-message" *ngIf="sregister.get('polit').hasError(validation.type) && (sregister.get('polit').dirty || sregister.get('polit').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+					<ng-container *ngFor="let validation of validation_messages.terms">
+						<div class="error-message" *ngIf="sregister.get('terms').hasError(validation.type) && (sregister.get('terms').dirty || sregister.get('terms').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+				<ion-button type="submit" [disabled]="!sregister.valid" class="btnRegister" mode="md">Entrar</ion-button>
+				<ion-button class="btnBack" mode="md" (click)="back()">Cancelar</ion-button>
+			</ion-list>
+		</form>
+  	</div>
+</ion-content>

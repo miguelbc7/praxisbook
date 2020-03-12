@@ -19,9 +19,25 @@ import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore'
+import { Facebook } from '@ionic-native/facebook/ngx'
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
+import { SregisterPageModule } from './pages/sregister/sregister.module';
+import { EditUserPageModule } from './pages/edit-user/edit-user.module';
+import { EditPasswordPageModule } from './pages/edit-password/edit-password.module';
+import { AdicionalPageModule } from './pages/adicional/adicional.module';
+
+import { SharePageModule } from './pages/share/share.module';
+import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+
+declare var Hammer: any;
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent
+  ],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -34,10 +50,19 @@ import { AngularFirestoreModule } from '@angular/fire/firestore'
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFirestoreModule,
+    SregisterPageModule,
+    EditUserPageModule,
+    EditPasswordPageModule,
+    AdicionalPageModule,
+    SharePageModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Facebook,
+    GooglePlus,
+    SocialSharing,
+    InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
 

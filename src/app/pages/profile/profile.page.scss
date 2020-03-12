@@ -76,7 +76,13 @@ app-profile{
             }
         }
     }
-
+    .btnBack{
+        --background: transparent;
+        color: #FFF;
+        --box-shadow: none;
+        position: relative;
+        left: 0px;
+    }
     .bb-0{
         border-bottom: 0 !important;   
     }

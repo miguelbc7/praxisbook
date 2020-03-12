@@ -5,8 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { LibraryPageRoutingModule } from './library-routing.module';
-
 import { LibraryPage } from './library.page';
+import { ComponentsModule } from '../../components/components.module';
 
 import { MaterialModule } from '../../material.io'
 
@@ -16,7 +16,8 @@ import { MaterialModule } from '../../material.io'
     FormsModule,
     IonicModule,
     LibraryPageRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ComponentsModule
   ],
   declarations: [LibraryPage]
 })
