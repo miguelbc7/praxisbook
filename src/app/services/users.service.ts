@@ -64,12 +64,9 @@ export class UsersService {
 	async fbLogin() {
 		return new Promise( (resolve, reject) => {
 			this.fb.login(['email']).then( (response: FacebookLoginResponse) => {
-				/* console.log('Logged into Facebook!', response); */
-
 				var facebookCredential = auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
 
 				this.auth.auth.signInWithCredential(facebookCredential).then( success => { 
-					/* console.log("Firebase success: " + JSON.stringify(success)); */
 					resolve(success.user); 
 				}).catch( error => { 
 					console.log('error', error);
@@ -88,7 +85,6 @@ export class UsersService {
 				var googleCredential = auth.GoogleAuthProvider.credential(null, response.accessToken);
 
 				this.auth.auth.signInWithCredential(googleCredential).then( success => { 
-					/* console.log("Firebase success: " + JSON.stringify(success)); */
 					resolve(success.user); 
 				}).catch( error => { 
 					console.log('error', error);
@@ -310,6 +306,30 @@ export class UsersService {
 			}).catch( error => {
 				console.log('error', error);
 				reject('error');
+			});
+		});
+	}
+
+	async recover(email) {
+		return new Promise( (resolve, reject) => {
+			var data = {
+				email: email,
+			}
+			return this.http.post(this.base_path + 'recovery', data, {
+				headers: new HttpHeaders({
+					'Content-Type': 'application/json',
+					'Authorization': this.token
+				})
+			}).pipe(
+				map(res => res)
+			).subscribe( data => {
+				if(data) {
+					resolve(data);
+				}
+			}, error => {
+				if(error) {
+					reject(error);
+				}
 			});
 		});
 	}

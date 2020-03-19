@@ -1,0 +1,27 @@
+<ion-content>
+	<div class="boxBody">
+		<div class="box">
+			<img src="assets/img/logo.svg" alt="">
+			<h5>Praxi <br>Book</h5>
+		</div>
+		<form [formGroup]="sende" (ngSubmit)="onSubmit(sende.value)"  class="ion-margin-horizontal">
+			<ion-list>
+				<ion-item lines="none">  
+					<ion-label position="floating">Email</ion-label>
+					<ion-input formControlName="raus_send_email" name="raus_send_email" type="email"></ion-input>
+				</ion-item>
+				<div class="validation-errors">
+					<ng-container *ngFor="let validation of validation_messages.raus_send_email">
+						<div class="error-message" *ngIf="sende.get('raus_send_email').hasError(validation.type) && (sende.get('raus_send_email').dirty || sende.get('raus_send_email').touched)">
+							{{ validation.message }}
+						</div>
+					</ng-container>
+				</div>
+			</ion-list>
+			<div class="box-entrar">
+				<ion-button type="submit" [disabled]="!sende.valid" class="entrar" mode="md">Entrar</ion-button>
+				<ion-button class="register" routerLink="/login" mode="md">Cancelar</ion-button>
+			</div>
+		</form>
+	</div>
+</ion-content>

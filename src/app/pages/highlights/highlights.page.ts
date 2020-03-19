@@ -27,6 +27,7 @@ export class HighlightsPage implements OnInit {
 		var data = this.route.snapshot.params.data;
 		this.uid = localStorage.getItem('uid');
 		this.data = data;
+		var status;
 
 		var segment = document.querySelector('ion-segment');
 		var slides = document.querySelector('ion-slides');
@@ -73,5 +74,15 @@ export class HighlightsPage implements OnInit {
 		}).catch( error => {
 			console.log('error', error)
 		})
+	}
+
+	doRefresh(event) {
+		console.log('Begin async operation');
+	
+		setTimeout(() => {
+		  console.log('Async operation has ended');
+		  this.getBooks();
+		  event.target.complete();
+		}, 2000);
 	}
 }

@@ -83,20 +83,22 @@ export class HomePage {
 	}
 
 	async socialSharing(id, name, cover) {
+		console.log('cover', cover);
+		
 		var options = {
-			message: 'Mira este Libro',
+			message: 'Mira este Libro ' + name,
 			subject: name,
-			files: [ cover ],
-			url: 'http://localhost:8100/book;id=' + id,
+			/* files: [ cover ], */
+			/* url: 'http://localhost:8100/book;id=' + id, */
 			chooserTitle: 'Seleccione una aplicación',
-			appPackageName: 'com.praxi.book',
-			iPadCoordinates: '0,0,0,0'
+			/* appPackageName: 'com.praxi.book', */
+			/* iPadCoordinates: '0,0,0,0' */
 		};
 
 		this.share.shareWithOptions(options).then( success => {
 			console.log('success', success);
 		}).catch( error => {
-			console.log('error', error);
+			console.log('errorSharing', error);
 		});
 	}
 
@@ -118,6 +120,7 @@ export class HomePage {
 	
 		setTimeout(() => {
 		  console.log('Async operation has ended');
+		  this.getBooks();
 		  event.target.complete();
 		}, 2000);
 	}

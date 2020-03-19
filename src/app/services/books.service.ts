@@ -125,7 +125,7 @@ export class BooksService {
 
 	async getBook(id) {
 		return new Promise( (resolve, reject) => {
-			return this.http.get(this.base_path + 'books/' + id, {
+			return this.http.get(this.base_path + 'books/categories/' + id, {
 				headers: new HttpHeaders({
 					'Content-Type': 'application/json',
 					'Authorization': this.token

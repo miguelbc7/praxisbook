@@ -79,14 +79,18 @@ const routes: Routes = [
 		path: 'share',
 		loadChildren: () => import('./pages/share/share.module').then( m => m.SharePageModule)
 	},
-  {
-    path: 'highlights',
-    loadChildren: () => import('./pages/highlights/highlights.module').then( m => m.HighlightsPageModule)
-  },
-  {
-    path: 'adicional',
-    loadChildren: () => import('./pages/adicional/adicional.module').then( m => m.AdicionalPageModule)
-  }
+	{
+		path: 'highlights',
+		loadChildren: () => import('./pages/highlights/highlights.module').then( m => m.HighlightsPageModule)
+	},
+	{
+		path: 'adicional',
+		loadChildren: () => import('./pages/adicional/adicional.module').then( m => m.AdicionalPageModule)
+	},
+	{
+		path: 'newpass',
+		loadChildren: () => import('./pages/newpass/newpass.module').then( m => m.NewpassPageModule)
+	}
 ];
 
 @NgModule({

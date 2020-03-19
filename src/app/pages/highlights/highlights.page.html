@@ -1,5 +1,8 @@
 <app-navbar></app-navbar>
 <ion-content>
+	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
 	<div class="nav">
 		<ion-button class="btnBack" mode="md" routerLink="/library"><ion-icon name="chevron-back-outline"></ion-icon></ion-button>
 		<h5>Destacados {{ data }}</h5>

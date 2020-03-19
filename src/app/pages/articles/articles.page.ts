@@ -13,7 +13,7 @@ import { UsersService } from '../../services/users.service';
 export class ArticlesPage implements OnInit {
 
 	libros;
-	uid
+	uid;
 
 	constructor(
 		private router: Router,
@@ -25,6 +25,7 @@ export class ArticlesPage implements OnInit {
 	ngOnInit() {
 		var data = this.route.snapshot.params.data;
 		this.uid = localStorage.getItem('uid');
+		var status;
 
 		var segment = document.querySelector('ion-segment');
 		var slides = document.querySelector('ion-slides');
@@ -73,5 +74,15 @@ export class ArticlesPage implements OnInit {
 		}).catch( error => {
 			console.log('error', error)
 		})
+	}
+
+	doRefresh(event) {
+		console.log('Begin async operation');
+	
+		setTimeout(() => {
+		  console.log('Async operation has ended');
+		  this.getMyBooks();
+		  event.target.complete();
+		}, 2000);
 	}
 }

@@ -31,9 +31,7 @@
 							<ion-item lines="none">
 								<ion-label>Qty:</ion-label>
 								<div slot="end" class="BtnQty">
-								<!-- <ion-button mode="md" (click)="less()">-</ion-button> -->
 								<ion-input type="number" readonly [value]="count"></ion-input>
-								<!-- <ion-button mode="md" (click)="more()">+</ion-button> -->
 								</div>
 							</ion-item>
 							<ion-item lines="none">
@@ -95,10 +93,13 @@
 								</ion-radio-group>
 							</div>
 							<ion-item class="mb-15" lines="none">
-								<ion-label position="stacked">Enter email or email list <br>(separated by ,)</ion-label>
-								<ion-input class="input" type="text" [(ngModel)]='emails' (ionChange)="changeCount()"></ion-input>
-								<!-- <tag-input [(ngModel)]='emails' (onAdd)="onAdding($event)"></tag-input> -->
-								<!-- <span slot="end"><img src="assets/img/check.png" alt=""></span> -->
+								<ion-label position="stacked">Enter email or email list <!-- <br>(separated by ,) --></ion-label>
+								<ion-input class="input pr" type="text" [(ngModel)]="emails2" [value]="emails2"></ion-input>
+								<ion-button class="btnSend-input" name="send" slot="end" (click)="changeCount()"><ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
+								<div class="spaceddiv" *ngFor="let e of emails3; let i = index">
+									<span class="spaced">{{ e }}</span> <p (click)="deleteEmail(e)">x</p>
+									<br>
+								</div>
 							</ion-item>
 							<ion-grid class="p-0">
 								<ion-row class="p-0">
@@ -108,12 +109,6 @@
 										<ion-input class="input" type="text" [(ngModel)]='from'></ion-input>
 									</ion-item>
 								</ion-col>
-								<!-- <ion-col size="6" class="p-0">
-									<ion-item class="mb-15" no-padding lines="none">
-										<ion-label position="stacked">to</ion-label>
-										<ion-input class="input" type="text"></ion-input>
-									</ion-item>
-								</ion-col> -->
 								</ion-row>
 							</ion-grid>
 							<ion-item class="mb-15" lines="none">
@@ -126,13 +121,28 @@
 				<ion-col size="12">
 					<ion-button class="btnSend" mode="md" (click)="buy(libro._id)"><span>{{ label }}</span><ion-icon name="caret-forward-outline"></ion-icon></ion-button>
 				</ion-col>
-				<ion-col size="12">
+				<ion-col size="12" *ngIf="libroslength > 0">
 					<h5 class="textInteresing">También te puede interesar</h5>
 					<ion-slides [options]="slideOpts" #mySlider>
-						<ion-slide>
+						<ion-slide *ngFor="let l of libros">
+							<ion-card class="cardEdit" (click)="goToBuyBook(l._id)"> 
+								<ion-card-header class="p-0" (click)="goToBuyBook(l._id)">
+									<img *ngIf="l.cover" src="{{ l?.cover }}" alt="{{ l?.name }}" onError="this.src = 'assets/img/portada.png'">
+									<img *ngIf="!l.cover" src="assets/img/portada.png" alt="{{ l?.name }}">
+								</ion-card-header>
+								<ion-card-content>
+									<h5 class="title" (click)="goToBuyBook(l._id)">{{ l?.name }}</h5>
+									<div class="alignAuthor">
+										<p (click)="goToBuyBook(l._id)">{{ libro?.author }}</p>
+										<ion-button slot="end" mode="md" (click)="socialSharing(l?._id, l?.name, l?.cover)"><img src="assets/img/share.png" alt=""></ion-button>
+									</div>
+								</ion-card-content>
+							</ion-card>
+						</ion-slide>
+						<!-- <ion-slide>
 							<ion-card class="cardEdit" routerLink="/buy-book"> 
 								<ion-card-header class="p-0">
-									<img src="https://s3-us-west-2.amazonaws.com/lasaga-blog/media/images/grupo_imagen.original.jpg" alt="">
+									<img src="assets/img/example.png" alt="">
 								</ion-card-header>
 								<ion-card-content>
 									<h5 class="title">Guia de la pasta</h5>
@@ -156,21 +166,7 @@
 									</div>
 								</ion-card-content>
 							</ion-card>
-						</ion-slide>
-						<ion-slide>
-							<ion-card class="cardEdit" routerLink="/buy-book"> 
-								<ion-card-header class="p-0">
-									<img src="assets/img/example.png" alt="">
-								</ion-card-header>
-								<ion-card-content>
-									<h5 class="title">Guia de la pasta</h5>
-									<div class="alignAuthor">
-										<p>Luigi Scociola</p>
-										<ion-button slot="end" mode="md"><img src="assets/img/share.png" alt=""></ion-button>
-									</div>
-								</ion-card-content>
-							</ion-card>
-						</ion-slide>
+						</ion-slide> -->
 					</ion-slides>
 				</ion-col>
 			</ion-row>

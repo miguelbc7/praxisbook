@@ -38,8 +38,8 @@
 								<div class="alignAuthor">
 									<p *ngIf="!libro.my_book || libro.my_book == false" (click)="goToBuyBook(libro._id)">{{ libro?.author }}</p>
 									<p *ngIf="libro.my_book || libro.my_book == true" (click)="goToBook(libro._id)">{{ libro?.author }}</p>
-									<!-- <ion-button slot="end" mode="md" (click)="socialSharing(libro?._id, libro?.name, libro?.cover)"><img src="assets/img/share.png" alt=""></ion-button> -->
-									<ion-button slot="end" mode="md"><img src="assets/img/share.png" alt=""></ion-button>
+									<ion-button slot="end" mode="md" (click)="socialSharing(libro?._id, libro?.name, libro?.cover)"><img src="assets/img/share.png" alt=""></ion-button>
+									<!-- <ion-button slot="end" mode="md"><img src="assets/img/share.png" alt=""></ion-button> -->
 								</div>
 							</ion-card-content>
 						</ion-card>
@@ -75,8 +75,8 @@
 								<div class="alignAuthor">
 									<p *ngIf="!libro.my_book || libro.my_book == false" (click)="goToBuyBook(libro._id)">{{ libro?.author }}</p>
 									<p *ngIf="libro.my_book || libro.my_book == true" (click)="goToBook(libro._id)">{{ libro?.author }}</p>
-									<!-- <ion-button slot="end" mode="md" (click)="socialSharing(libro?._id, libro?.name, libro?.cover)"><img src="assets/img/share.png" alt=""></ion-button> -->
-									<ion-button slot="end" mode="md"><img src="assets/img/share.png" alt=""></ion-button>
+									<ion-button slot="end" mode="md" (click)="socialSharing(libro?._id, libro?.name, libro?.cover)"><img src="assets/img/share.png" alt=""></ion-button>
+									<!-- <ion-button slot="end" mode="md"><img src="assets/img/share.png" alt=""></ion-button> -->
 								</div>
 							</ion-card-content>
 						</ion-card>

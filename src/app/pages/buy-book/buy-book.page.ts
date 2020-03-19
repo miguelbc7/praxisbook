@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ToastController } from '@ionic/angular';
@@ -8,6 +8,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { UsersService } from '../../services/users.service';
 import { Observable, of } from 'rxjs';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { map, filter } from 'rxjs/operators';
 declare var cordova;
 
@@ -29,6 +30,8 @@ export class BuyBookPage implements OnInit {
 		slidesPerView: 2
 	}
 	libro;
+	libros;
+	libroslength;
 	label = 'Comprar';
 	version;
 	base64;
@@ -37,6 +40,8 @@ export class BuyBookPage implements OnInit {
 	browser;
 	val: number = 1;
 	emails;
+	emails2;
+	emails3;
 	public sendData: FormGroup;
 
   	constructor(
@@ -48,7 +53,9 @@ export class BuyBookPage implements OnInit {
 		private users: UsersService,
 		private iab: InAppBrowser,
 		private db: AngularFireDatabase,
-		private _location: Location
+		private _location: Location,
+		private share: SocialSharing,
+		readonly ngZone: NgZone
 	) {
 		this.sendData = formBuilder.group({
 			version: ['', Validators.compose([
@@ -85,7 +92,9 @@ export class BuyBookPage implements OnInit {
 	getBook(id) {
 		this.books.getBook(id).then( (data: any) => {
 			console.log('data', data);
-			this.libro = data;
+			this.libro = data.book;
+			this.libros = data.books;
+			this.libroslength = data.books.length;
 		}).catch( error => {
 			console.log('error', error);
 		})
@@ -93,8 +102,6 @@ export class BuyBookPage implements OnInit {
 
 	buy(id) {
 		if(this.statusBuy) {
-			var array = this.emails.split(',');
-
 			if(!this.from) {
 				this.presentToast('El from no puede estar vacio');
 			}
@@ -103,12 +110,12 @@ export class BuyBookPage implements OnInit {
 				this.presentToast('El mensaje no puede estar vacio');
 			}
 
-			if(array.length < 1) {
+			if(this.emails3.length < 1) {
 				this.presentToast('Debe ingresar un correo para enviar el libro');
 			}
 
-			if((this.from) && (this.message) && (array.length > 0)) {
-				this.books.sendBook(id, array, this.from, this.val, this.message).then( (data: any) => {
+			if((this.from) && (this.message) && (this.emails3.length > 0)) {
+				this.books.sendBook(id, this.emails3, this.from, this.val, this.message).then( (data: any) => {
 					var pageContent = '<form name="from" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST" target="__blank">' +
 						'<input hidden type="text" name="Ds_SignatureVersion" value=' + data.version + '>' +
 						'<input hidden type="text" name="Ds_MerchantParameters" value=' + data.base64 + '>' +
@@ -131,8 +138,6 @@ export class BuyBookPage implements OnInit {
 			}
 		} else {
 			this.books.buyBook(id).then( (data: any) => {
-				console.log('data', data);
-	
 				var pageContent = '<form name="from" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST" target="__blank">' +
 					'<input hidden type="text" name="Ds_SignatureVersion" value=' + data.version + '>' +
 					'<input hidden type="text" name="Ds_MerchantParameters" value=' + data.base64 + '>' +
@@ -155,7 +160,7 @@ export class BuyBookPage implements OnInit {
 		}
 	}
 	  
-	less(){
+	less() {
 		this.count = this.count - 1;
 		
 		if (this.count <= 0){
@@ -163,12 +168,11 @@ export class BuyBookPage implements OnInit {
 		}
 	}
   
-	more(){
+	more() {
 		this.count = this.count + 1;
 	}
 
-	status(id){
-
+	status(id) {
 		if (id == 1){
 			this.statusBuy = false;
 			this.active = true;
@@ -193,13 +197,11 @@ export class BuyBookPage implements OnInit {
 	async listenerStatus() {
 		var r = await this.db.object('usuarios/' + this.uid).valueChanges().subscribe( async (success: any) => {
 			if(success.status_trans == 2) {
-				console.log('2', 2);
 				this.browser.close();
 				await this.back();
 				this.presentToast('El libro ha sido comprado con éxito');
 				r.unsubscribe();
 			} else if(success.status_trans == 3) {
-				console.log('3', 3);
 				this.browser.close();
 				await this.back();
 				this.presentToast('Ocurrio un error al comprar el libro');
@@ -219,16 +221,91 @@ export class BuyBookPage implements OnInit {
 	}
 
 	async changeCount() {
-		var a = this.emails;
-		var array = a.split(',');
-		var length = array.length;
+		var a = this.emails2;
+		var length;
+		var array = [];
 
-		if(!a) {
-			this.count = 0;
-		} else {
-			if(this.count != length) {
-				this.count = length;
+		var b = this.validateEmail(a);
+
+		if(b) {
+			if(!a) {
+				this.count = 0;
+			} else {
+				if(a.indexOf(',') > -1) {
+					array.push(a)
+					length = array.length;
+				} else {
+					array.push(a);
+					length = array.length;
+				}
+			
+				if(this.count != length) {
+					this.count = length;
+				}
 			}
+	
+			this.ngZone.run(() => {
+				this.emails2 = '';
+			});
+	
+			var array2 = this.emails3;
+	
+			if(array2) {
+				this.emails3 = array2.concat(array);
+			} else {
+				this.emails3 = array;
+			}
+	
+			this.emails = this.emails3.join(', ');
+		} else {
+			this.ngZone.run(() => {
+				this.emails2 = '';
+			});
+
+			this.presentToast('Este no es un correo electronico valido');
 		}
+	}
+
+	validateEmail(email) {
+		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return re.test(String(email).toLowerCase());
+	}
+
+	deleteEmail(email) {
+		var arr = this.emails3;
+		const index = arr.indexOf(email);
+
+		if(index > -1) {
+			arr.splice(index, 1);
+			this.emails3 = arr;
+		}
+	}
+
+	goToBuyBook(id) {
+		this.users.changeTransStatus(this.uid, 1).then( success => {
+			this.router.navigate(['buy-book', { id: id }]);
+		}).catch( error => {
+			console.log('error', error)
+		});
+	}
+
+	async socialSharing(id, name, cover) {
+		console.log('cover', cover);
+		
+		var options = {
+			message: 'Mira este Libro ' + name,
+			subject: name,
+			/* files: [ cover ], */
+			/* url: 'http://localhost:8100/book;id=' + id, */
+			chooserTitle: 'Seleccione una aplicación',
+			/* appPackageName: 'com.praxi.book', */
+			/* iPadCoordinates: '0,0,0,0' */
+		};
+
+		this.share.shareWithOptions(options).then( success => {
+			console.log('success', success);
+		}).catch( error => {
+			console.log('errorSharing', error);
+		});
 	}
 }
